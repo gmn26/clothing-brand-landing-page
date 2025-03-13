@@ -258,7 +258,9 @@ export default function Home() {
                 <div className="bg-[#d15d3d88] absolute rounded-full h-48 w-48"></div>
                 <div className="bg-[#b6412199] absolute rounded-full h-30 w-30"></div>
               </div>
-              <h2 className={`text-3xl mb-12 ${playfairDisplay.className}`}>
+              <h2
+                className={`md:hidden block text-3xl mb-12 ${playfairDisplay.className}`}
+              >
                 Our Customer is All Around The World!
               </h2>
               <div className="grid grid-cols-6 grid-rows-5 gap-4 w-full z-50 text-white">
