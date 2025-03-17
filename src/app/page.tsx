@@ -2,6 +2,7 @@
 
 import {
   AlignLeft,
+  AlignRight,
   ArrowDownRight,
   ArrowLeft,
   ArrowRight,
@@ -35,6 +36,7 @@ import { Bonheur_Royale } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
 import { Bebas_Neue } from "next/font/google";
 import { useDarkMode } from "./context/ThemeContext";
+import { useState } from "react";
 
 const bonheurRoyale = Bonheur_Royale({
   subsets: ["latin"],
@@ -53,6 +55,7 @@ const bebasNeue = Bebas_Neue({
 
 export default function Home() {
   const { darkMode, setDarkMode } = useDarkMode();
+  const [expandSideNav, setExpandSideNav] = useState(false);
 
   return (
     <>
@@ -69,7 +72,29 @@ export default function Home() {
         <span>{!darkMode ? "Light Mode" : "Dark Mode"}</span>
         {!darkMode ? <Sun /> : <Moon />}
       </button>
-      <nav className="flex items-center justify-between px-6 py-2 *:w-full">
+      <div className="md:hidden my-4 relative">
+        <div className={`text-center text-3xl ${bonheurRoyale.className}`}>
+          GM Apparel
+        </div>
+        <button
+          onClick={() => setExpandSideNav(!expandSideNav)}
+          className="z-50 absolute right-4 top-0 bottom-0"
+        >
+          <AlignRight />
+        </button>
+      </div>
+      <nav
+        className={`${
+          expandSideNav ? "translate-x-0" : "translate-x-full"
+        } md:hidden transition-all duration-700 overflow-hidden absolute top-0 right-0 bottom-0 left-0 z-40 bg-white/60`}
+      >
+        <ul>
+          <li>Menu</li>
+          <li>Menu</li>
+          <li>Menu</li>
+        </ul>
+      </nav>
+      <nav className="md:flex hidden items-center justify-between px-6 py-2 *:w-full">
         <div>
           <AlignLeft />
         </div>
